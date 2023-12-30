@@ -1,21 +1,27 @@
-# Vite + react-map-gl
+# Vite + react-map-gl template
+
+This is a most simple template for [Vite](https://vitejs.dev/) + [react-map-gl](https://visgl.github.io/react-map-gl/) + [TypeScript](https://www.typescriptlang.org/).
+
+## Requirements
+
+- [Node.js](https://nodejs.org/) >= 18
 
 ## How to use
 
-### StackBlitz
+### Try on StackBlitz
 
 https://github.stackblitz.com/yuiseki/vite-react-map-gl-template
 
-### Local development
+### Start development on your local machine
 
 ```bash
-npx degit yuiseki/vite-react-map-gl-template#main my-react-map-gl-app
-cd my-react-map-gl-app
+npx degit yuiseki/vite-react-map-gl-template#main my-map-app
+cd my-map-app
 npm install
 npm run dev
 ```
 
-- Open http://localhost:5173/vite-react-map-gl-template/ in your browser.
+- Open http://localhost:5173/my-map-app/ in your browser.
 
 ### Deploy to GitHub Pages
 
