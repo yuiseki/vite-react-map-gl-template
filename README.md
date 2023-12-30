@@ -6,6 +6,18 @@ This is a most simple template for [Vite](https://vitejs.dev/) + [react-map-gl](
 
 - [Node.js](https://nodejs.org/) >= 18
 
+## Why we (me) need this template?
+
+- This is a most simple template for Vite + react-map-gl + TypeScript.
+- I have made many software with combination described above.
+- But react-map-gl has some breaking changes in the past.
+- So I want to make a template for react-map-gl based on Vite.
+- This template will make it easier to deal with breaking changes in react-map-gl.
+  - This template is enabled to GitHub Actions.
+  - This template is also enabled to deploy to GitHub Pages, Vercel.
+  - This template is also enabled to use renovate.
+- I hope this template will be useful for you.
+
 ## How to use
 
 ### Try on StackBlitz
