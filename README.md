@@ -1,5 +1,14 @@
 # Vite + react-map-gl template
 
+<a href="https://stackblitz.com/~/github/yuiseki/vite-react-map-gl-template">
+  <img
+    alt="Open in StackBlitz"
+    src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"
+  />
+</a>
+
+## What is this?
+
 This is a most simple template for [Vite](https://vitejs.dev/) + [react-map-gl](https://visgl.github.io/react-map-gl/) + [TypeScript](https://www.typescriptlang.org/).
 
 ## Requirements
