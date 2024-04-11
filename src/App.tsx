@@ -12,7 +12,7 @@ function App() {
         initialViewState={{
           longitude: 0,
           latitude: 0,
-          zoom: 6,
+          zoom: 9,
         }}
         hash={true}
         style={{ width: "100%", height: "100%" }}
