@@ -1,6 +1,6 @@
 # Vite + react-map-gl template
 
-<a href="https://stackblitz.com/~/github/yuiseki/vite-react-map-gl-template">
+<a href="https://stackblitz.com/~/github/yuiseki/vite-react-map-gl-template" target="_blank">
   <img
     alt="Open in StackBlitz"
     src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"
