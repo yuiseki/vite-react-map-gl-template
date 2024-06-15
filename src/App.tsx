@@ -16,7 +16,8 @@ function App() {
         }}
         hash={true}
         style={{ width: "100%", height: "100%" }}
-        mapStyle="https://tile.openstreetmap.jp/styles/osm-bright-ja/style.json"
+        //mapStyle="https://tile.openstreetmap.jp/styles/osm-bright-ja/style.json"
+        mapStyle="./style.json"
       >
         <GeolocateControl position="top-right" />
         <NavigationControl
