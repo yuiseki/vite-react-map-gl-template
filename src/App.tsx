@@ -6,7 +6,7 @@ import {
 import maplibregl from "maplibre-gl";
 import { Protocol as PMTilesProtocol } from "pmtiles";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 
 const mapStyles = {
   osm_vector: "./styles/osm_vector.json",
@@ -16,23 +16,38 @@ const mapStyles = {
 
 type MapStyle = keyof typeof mapStyles;
 
-function App() {
-  const [pmTilesReady, setPmTilesReady] = useState<boolean>(false);
-  const [mapStyle, setMapStyle] = useState<MapStyle | undefined>(undefined);
-  const queryParams = new URLSearchParams(window.location.search);
-
-  useEffect(() => {
-    if (pmTilesReady) return;
-
-    // Register PMTiles protocol
+// Initialize PMTiles protocol once
+let pmTilesInitialized = false;
+const initializePMTiles = () => {
+  if (!pmTilesInitialized) {
     const protocol = new PMTilesProtocol();
     maplibregl.addProtocol("pmtiles", protocol.tile);
-    setPmTilesReady(true);
-    setMapStyle("osm_vector");
+    pmTilesInitialized = true;
+  }
+};
+
+function App() {
+  // Get initial style from URL
+  const initialStyle = useMemo(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const styleNameParam = queryParams.get("style");
+    const styleNames = Object.keys(mapStyles);
+    if (styleNameParam && styleNames.includes(styleNameParam)) {
+      return styleNameParam as MapStyle;
+    }
+    return "osm_vector" as MapStyle;
   }, []);
 
-  const changeMapStyle = (style: MapStyle) => {
+  const [mapStyle, setMapStyle] = useState<MapStyle>(initialStyle);
+
+  // Initialize PMTiles protocol
+  useEffect(() => {
+    initializePMTiles();
+  }, []);
+
+  const changeMapStyle = useCallback((style: MapStyle) => {
     setMapStyle(style);
+    const queryParams = new URLSearchParams(window.location.search);
     queryParams.set("style", style);
     let newUrl =
       window.location.protocol +
@@ -45,16 +60,6 @@ function App() {
       newUrl += window.location.hash;
     }
     window.history.replaceState({ path: newUrl }, "", newUrl);
-  };
-
-  useEffect(() => {
-    const styleNameParam = queryParams.get("style");
-    const styleNames = Object.keys(mapStyles);
-    if (styleNameParam && styleNames.includes(styleNameParam)) {
-      setMapStyle(styleNameParam as MapStyle);
-    } else {
-      changeMapStyle("osm_vector");
-    }
   }, []);
 
   return (
@@ -67,7 +72,7 @@ function App() {
         }}
         hash={true}
         style={{ width: "100%", height: "100%" }}
-        mapStyle={pmTilesReady && mapStyle ? mapStyles[mapStyle] : undefined}
+        mapStyle={mapStyles[mapStyle]}
       >
         <div>
           <select
