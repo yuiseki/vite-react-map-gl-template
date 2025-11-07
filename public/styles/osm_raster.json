@@ -3,9 +3,7 @@
   "sources": {
     "openstreetmap_xyz": {
       "type": "raster",
-      "tiles": [
-        "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-      ],
+      "tiles": ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
       "tileSize": 256,
       "attribution": "© <a href=\"http://www.openstreetmap.org/\">OpenStreetMap contributors</a>"
     }
